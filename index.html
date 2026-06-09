@@ -5,61 +5,108 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PPMS Collège Jules Ferry Gémozac</title>
 <style>
+:root{
+  --bg1:#07111f;
+  --bg2:#12395a;
+  --card:#ffd84d;
+  --blue:#2795ff;
+  --green:#12b85a;
+  --red:#d81f26;
+  --orange:#ff8a00;
+  --dark:#07111f;
+  --glass:rgba(255,255,255,.14);
+  --line:rgba(255,255,255,.22);
+}
 *{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-body{margin:0;background:linear-gradient(135deg,#07111f,#12395a);color:white}
-header{text-align:center;padding:30px 15px}
-h1{font-size:42px;margin:0}
-h2{text-align:center;font-size:30px}
-.container{max-width:1200px;margin:auto;padding:20px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.grid .card:nth-child(4),.grid .card:nth-child(5){margin-top:40px}
+html,body{min-height:100%}
+body{margin:0;background:radial-gradient(circle at top left,#1f5f91 0,#07111f 42%,#020611 100%);color:white}
+body::before{content:"";position:fixed;inset:0;background:linear-gradient(120deg,rgba(255,255,255,.05),transparent 35%,rgba(255,216,77,.04));pointer-events:none}
+header{text-align:center;padding:22px 15px 12px;position:relative;z-index:1}
+h1{font-size:38px;margin:0;letter-spacing:.3px;text-shadow:0 0 18px rgba(39,149,255,.28)}
+h2{text-align:center;font-size:28px;margin:10px 0 18px}
+.container{max-width:1220px;margin:auto;padding:14px 18px 28px;position:relative;z-index:1}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1060px;margin:auto}
+.grid .card:nth-child(4),.grid .card:nth-child(5){margin-top:28px}
 .grid .card:nth-child(4){grid-column:1}
 .grid .card:nth-child(5){grid-column:3}
-.card{background:#ffd84d;color:#111;border-radius:18px;padding:42px 18px;text-align:center;font-size:36px;font-weight:bold;cursor:pointer;box-shadow:0 10px 25px #0008}
-.card:hover{transform:scale(1.03)}
-.box{background:#ffffff22;border-radius:18px;padding:25px;max-width:800px;margin:20px auto}
-.ppms-top{background:#ffd84d;color:#111;border-radius:16px;padding:12px;font-size:18px;font-weight:bold;margin-bottom:15px;text-align:center}
-.ppms-top span{margin:0 10px;display:inline-block}
-label{display:block;font-size:22px;margin-top:16px}
-input,textarea{width:100%;padding:17px;font-size:22px;border:none;border-radius:12px;margin-top:8px}
-textarea{min-height:100px}
-button{width:100%;padding:22px;margin-top:20px;border:none;border-radius:14px;font-size:24px;font-weight:bold;cursor:pointer}
-.btn-blue{background:#2795ff;color:white}
-.btn-green{background:#12b85a;color:white;font-size:30px}
-.btn-red{background:#d81f26;color:white;font-size:30px}
-.btn-dark{background:#111;color:white}
+.card{background:linear-gradient(135deg,#ffe36e,#ffc928);color:#111;border-radius:22px;padding:34px 16px;text-align:center;font-size:34px;font-weight:900;cursor:pointer;box-shadow:0 14px 28px #0008, inset 0 1px 0 rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.45);transition:.18s}
+.card:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 18px 35px #0009}
+.box{background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(8px);border-radius:22px;padding:22px;max-width:820px;margin:14px auto;box-shadow:0 16px 34px rgba(0,0,0,.25)}
+.ppms-top{background:rgba(255,216,77,.95);color:#111;border-radius:16px;padding:10px 12px;font-size:17px;font-weight:900;margin:0 auto 12px;text-align:center;max-width:1060px;box-shadow:0 10px 20px #0005}
+.ppms-top span{margin:0 8px;display:inline-block}
+label{display:block;font-size:20px;margin-top:12px;font-weight:800}
+input,textarea{width:100%;padding:14px 15px;font-size:21px;border:none;border-radius:14px;margin-top:7px;outline:none;background:white;color:#111;box-shadow:inset 0 0 0 2px transparent}
+input:focus,textarea:focus{box-shadow:0 0 0 4px rgba(39,149,255,.35)}
+textarea{min-height:82px;resize:vertical}
+button{width:100%;padding:18px;margin-top:16px;border:none;border-radius:15px;font-size:23px;font-weight:900;cursor:pointer;box-shadow:0 10px 18px rgba(0,0,0,.26);transition:.14s}
+button:active{transform:scale(.985)}
+.btn-blue{background:linear-gradient(135deg,#2aa8ff,#1667ff);color:white}
+.btn-green{background:linear-gradient(135deg,#16d86c,#0c9e49);color:white;font-size:29px}
+.btn-red{background:linear-gradient(135deg,#ff3131,#b90012);color:white;font-size:29px}
+.btn-dark{background:#07111f;color:white;border:1px solid rgba(255,255,255,.25)}
 .btn-yellow{background:#ffd84d;color:#111}
 .hidden{display:none !important}
-table{width:100%;border-collapse:collapse;background:white;color:#111;font-size:17px;margin-top:20px}
-th,td{border:1px solid #ccc;padding:10px;text-align:center}
-th{background:#0b2c45;color:white}
-.status-green{background:#b8ffd1 !important;color:#062b13;font-weight:bold}
-.status-red{background:#ffaaaa !important;color:#5a0000;font-weight:bold;animation:softFlash 1s infinite}
-@keyframes softFlash{0%{filter:brightness(1)}50%{filter:brightness(1.22)}100%{filter:brightness(1)}}
-.counter{display:flex;gap:15px;flex-wrap:wrap;margin-top:20px}
-.counter div{flex:1;min-width:210px;background:white;color:#111;padding:18px;border-radius:14px;font-size:22px;text-align:center;font-weight:bold}
-.alertBanner{position:fixed;top:0;left:0;width:100%;z-index:9999;background:red;color:white;text-align:center;font-size:34px;font-weight:bold;padding:25px;animation:flash .7s infinite;box-shadow:0 10px 30px #0009}
-.alertBanner button{max-width:280px;margin:18px auto 0;background:#111;color:white;border:3px solid white}
+.table-wrap{width:100%;overflow:auto;border-radius:18px;box-shadow:0 14px 28px rgba(0,0,0,.34);margin-top:16px;background:white}
+table{width:100%;border-collapse:collapse;background:white;color:#111;font-size:19px;min-width:980px}
+th,td{border:1px solid #d2d7df;padding:12px 10px;text-align:center;vertical-align:middle}
+th{background:#082b49;color:white;font-size:18px;position:sticky;top:0;z-index:2}
+td{font-weight:700}
+.status-green{background:#b8ffd1 !important;color:#062b13;font-weight:900}
+.status-red{background:#ffaaaa !important;color:#5a0000;font-weight:900;animation:softFlash 1s infinite}
+@keyframes softFlash{0%{filter:brightness(1)}50%{filter:brightness(1.25)}100%{filter:brightness(1)}}
+.counter{display:flex;gap:14px;flex-wrap:wrap;margin-top:14px}
+.counter div{flex:1;min-width:210px;background:linear-gradient(135deg,#fff,#eaf4ff);color:#111;padding:20px;border-radius:18px;font-size:25px;text-align:center;font-weight:900;box-shadow:0 10px 20px #0005}
+.counter span{font-size:34px;color:#0b5790}
+.alertBanner{position:fixed;top:0;left:0;width:100%;z-index:9999;background:red;color:white;text-align:center;font-size:34px;font-weight:900;padding:22px;animation:flash .7s infinite;box-shadow:0 10px 30px #0009}
+.alertBanner button{max-width:280px;margin:14px auto 0;background:#111;color:white;border:3px solid white}
 @keyframes flash{0%{opacity:1}50%{opacity:.35}100%{opacity:1}}
-.small{font-size:17px;opacity:.85}
-.info{text-align:center;font-size:20px}
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;z-index:10000}
-.modal-box{background:white;color:#111;border-radius:20px;padding:30px;max-width:560px;width:90%;text-align:center;box-shadow:0 15px 40px #000}
-.modal-box h2{color:#111;margin-top:0;font-size:34px}
-.modal-box p{font-size:24px;font-weight:bold}
+.small{font-size:16px;opacity:.88}
+.info{text-align:center;font-size:19px;margin:8px 0 0;opacity:.92}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);display:flex;align-items:center;justify-content:center;z-index:10000;padding:18px}
+.modal-box{background:white;color:#111;border-radius:22px;padding:28px;max-width:560px;width:92%;text-align:center;box-shadow:0 15px 40px #000}
+.modal-box h2{color:#111;margin-top:0;font-size:32px}
+.modal-box p{font-size:24px;font-weight:900}
 .modal-actions{display:flex;gap:15px;margin-top:20px}
 .modal-actions button{margin-top:0}
-.urgent-banner{background:#ffd84d;color:#111;font-size:26px;font-weight:bold;padding:15px;border-radius:12px;text-align:center;margin-bottom:20px}
-.room-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:12px;margin-top:20px}
-.room-btn{background:#ffd84d;color:#111;border:3px solid #111;font-size:20px;margin-top:0;min-height:78px;line-height:1.15}
-.room-btn-selected{background:#12b85a !important;color:white !important;border:3px solid white;font-size:20px;margin-top:0;min-height:78px;line-height:1.15}
+.toast{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%) scale(.94);z-index:12000;background:linear-gradient(135deg,#00d084,#12b85a);color:white;border:3px solid rgba(255,255,255,.75);border-radius:22px;padding:24px 30px;min-width:min(88vw,420px);text-align:center;font-size:25px;font-weight:900;box-shadow:0 0 28px rgba(0,255,170,.65),0 18px 45px rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:.22s}
+.toast.show{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.toast.error{background:linear-gradient(135deg,#ff3b3b,#b90012);box-shadow:0 0 28px rgba(255,0,0,.6),0 18px 45px rgba(0,0,0,.55)}
+.urgent-banner{background:linear-gradient(135deg,#ffd84d,#ffb300);color:#111;font-size:24px;font-weight:900;padding:13px;border-radius:15px;text-align:center;margin-bottom:14px;box-shadow:0 0 18px rgba(255,216,77,.35)}
+.instruction-card{position:sticky;top:82px;z-index:8000;background:linear-gradient(135deg,#ff8a00,#ff5f00);color:white;border:3px solid #fff0b3;border-radius:22px;padding:20px 18px;margin:0 auto 14px;max-width:920px;text-align:center;font-size:30px;font-weight:900;line-height:1.25;text-shadow:0 2px 6px #0008;box-shadow:0 0 20px rgba(255,138,0,.8),0 0 45px rgba(255,138,0,.42),0 14px 30px rgba(0,0,0,.4);animation:instructionPop .35s ease-out}
+.instruction-card::before{content:"📢 CONSIGNE";display:block;font-size:18px;letter-spacing:1.5px;margin-bottom:6px;color:#fff6d7}
+@keyframes instructionPop{0%{transform:scale(.96);opacity:0}100%{transform:scale(1);opacity:1}}
+.room-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin-top:14px;max-height:58vh;overflow:auto;padding-right:4px}
+.room-btn{background:linear-gradient(135deg,#ffe36e,#ffc928);color:#111;border:2px solid rgba(0,0,0,.75);font-size:19px;margin-top:0;min-height:66px;line-height:1.12;padding:12px 8px;box-shadow:0 6px 12px #0005}
+.room-btn-selected{background:linear-gradient(135deg,#16d86c,#0c9e49) !important;color:white !important;border:2px solid white;font-size:19px;margin-top:0;min-height:66px;line-height:1.12;padding:12px 8px}
+.dashboard-actions{max-width:940px}
+.dashboard-actions textarea{min-height:74px}
 @media(max-width:800px){
-  .grid{grid-template-columns:1fr}
+  header{padding:18px 10px 8px}
+  .container{padding:10px}
+  .grid{grid-template-columns:1fr;gap:12px}
   .grid .card:nth-child(4),.grid .card:nth-child(5){grid-column:auto;margin-top:0}
-  h1{font-size:31px}
-  .card{font-size:31px}
-  table{font-size:13px}
-  th,td{padding:7px}
+  h1{font-size:27px}
+  h2{font-size:24px;margin:8px 0 12px}
+  .info{font-size:16px}
+  .card{font-size:29px;padding:24px 12px;border-radius:18px}
+  .box{padding:16px;margin:10px auto;border-radius:18px}
+  label{font-size:18px;margin-top:9px}
+  input,textarea{font-size:19px;padding:12px}
+  textarea{min-height:70px}
+  button{font-size:21px;padding:15px;margin-top:12px}
+  .btn-green,.btn-red{font-size:25px}
+  .ppms-top{font-size:14px;padding:8px}
+  .urgent-banner{font-size:20px;padding:11px}
+  .instruction-card{top:68px;font-size:23px;padding:16px 12px;border-radius:18px}
+  .counter{gap:9px}
+  .counter div{min-width:100%;font-size:21px;padding:14px}
+  .counter span{font-size:29px}
+  table{font-size:16px;min-width:920px}
+  th{font-size:15px}
+  th,td{padding:9px 7px}
+  .room-grid{grid-template-columns:repeat(auto-fit,minmax(112px,1fr));max-height:55vh}
+  .room-btn,.room-btn-selected{font-size:17px;min-height:58px}
+  .toast{font-size:21px;padding:20px 18px}
 }
 </style>
 </head>
@@ -78,6 +125,7 @@ th{background:#0b2c45;color:white}
     </div>
   </div>
 </div>
+<div id="operationToast" class="toast hidden">Opération confirmée</div>
 <header>
 <h1>Gestion de crise PPMS<br>Collège Jules Ferry, Gémozac</h1>
 <p class="info">Application de déclaration et de supervision en temps réel</p>
@@ -149,7 +197,7 @@ th{background:#0b2c45;color:white}
 <label>Message à envoyer à la direction / autorités</label>
 <textarea id="liveMessage" placeholder="Ex : bruit dans le couloir, élève blessé, besoin d’aide..."></textarea>
 <button class="btn-blue" onclick="sendLiveMessage()">Envoyer le message</button>
-<p id="userInstruction" style="font-size:28px;text-align:center;font-weight:bold;margin-top:25px;"></p>
+<div id="userInstruction" class="instruction-card hidden"></div>
 <button class="btn-dark" onclick="goHome()">Retour menu</button>
 </div>
 </section>
@@ -160,13 +208,14 @@ th{background:#0b2c45;color:white}
 <div>Élèves absents : <span id="totalAbsent">0</span></div>
 <div>Alertes rouges : <span id="totalRed">0</span></div>
 </div>
-<div class="box">
+<div class="box dashboard-actions">
 <button class="btn-red" onclick="sendEvacuation()">ÉVACUATION DEMANDÉE</button>
 <label>Message général à envoyer à tous</label>
 <textarea id="generalInstruction" placeholder="Ex : restez confinés, silence total, attendez les consignes..."></textarea>
 <button class="btn-blue" onclick="sendInstruction()">Envoyer la consigne</button>
 <button class="btn-dark" onclick="stopAlert()">STOP ALERTE</button>
 </div>
+<div class="table-wrap">
 <table>
 <thead>
 <tr>
@@ -183,6 +232,7 @@ th{background:#0b2c45;color:white}
 </thead>
 <tbody id="dashboardBody"></tbody>
 </table>
+</div>
 <button class="btn-dark" onclick="goHome()">Retour accueil</button>
 <label>Code de suppression</label>
 <input id="deleteCode" type="text" placeholder="Tape le code : supp">
@@ -250,6 +300,27 @@ const rooms = [
   "Salle polyvalente",
   "Vestiaires gymnase"
 ];
+function showToast(message, type){
+  const toast = document.getElementById("operationToast");
+  if(!toast) return;
+  toast.innerText = message;
+  toast.className = type === "error" ? "toast error show" : "toast show";
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(()=>{
+    toast.className = type === "error" ? "toast error hidden" : "toast hidden";
+  },2000);
+}
+function showUserInstruction(message){
+  const el = document.getElementById("userInstruction");
+  if(!el) return;
+  if(!message){
+    el.classList.add("hidden");
+    el.innerText = "";
+    return;
+  }
+  el.innerText = message;
+  el.classList.remove("hidden");
+}
 function unlockAudio(){
   if(audioUnlocked) return;
   const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -273,7 +344,7 @@ function login(role){
 function checkPassword(){
   const p = document.getElementById("passwordInput").value.trim();
   if(p !== "ppms"){
-    alert("Code incorrect. Code attendu : ppms");
+    showToast("Code incorrect", "error");
     return;
   }
   unlockAudio();
@@ -283,6 +354,7 @@ function checkPassword(){
     generateRooms();
   }
   else document.getElementById("dashboard").classList.remove("hidden");
+  showToast("Connexion validée");
 }
 function generateRooms(){
   const grid = document.getElementById("roomGrid");
@@ -301,6 +373,7 @@ function selectRoom(roomName, btn){
   });
   btn.className = "room-btn-selected";
   selectedRoom = roomName;
+  showToast("Salle sélectionnée : " + roomName);
   setTimeout(()=>{
     hideAll();
     document.getElementById("roomForm").classList.remove("hidden");
@@ -324,12 +397,14 @@ function sendTeacherInfo(){
     status:"EN ATTENTE",
     time:new Date().toLocaleTimeString()
   };
-  if(!entry.name || !entry.room){alert("Nom et salle obligatoires.");return;}
+  if(!entry.name || !entry.room){showToast("Nom et salle obligatoires", "error");return;}
   const newRef = db.ref("ppmsData").push();
   currentEntryId = newRef.key;
-  newRef.set(entry);
-  hideAll();
-  statusPage.classList.remove("hidden");
+  newRef.set(entry).then(()=>{
+    hideAll();
+    statusPage.classList.remove("hidden");
+    showToast("Votre appel a été envoyé à la direction");
+  }).catch(()=>showToast("Erreur d’envoi", "error"));
 }
 function sendStaffInfo(){
   const entry = {
@@ -343,12 +418,14 @@ function sendStaffInfo(){
     status:"EN ATTENTE",
     time:new Date().toLocaleTimeString()
   };
-  if(!entry.name || !entry.room){alert("Nom et lieu obligatoires.");return;}
+  if(!entry.name || !entry.room){showToast("Nom et lieu obligatoires", "error");return;}
   const newRef = db.ref("ppmsData").push();
   currentEntryId = newRef.key;
-  newRef.set(entry);
-  hideAll();
-  statusPage.classList.remove("hidden");
+  newRef.set(entry).then(()=>{
+    hideAll();
+    statusPage.classList.remove("hidden");
+    showToast("Votre déclaration a été envoyée à la direction");
+  }).catch(()=>showToast("Erreur d’envoi", "error"));
 }
 function updateStatus(status){
   if(!currentEntryId){alert("Aucune déclaration active.");return;}
@@ -377,38 +454,49 @@ function confirmStatusChoice(){
       type:"EVACUATION",
       active:true,
       time:Date.now()
-    });
+    }).then(()=>showToast("Évacuation envoyée à tous"));
     cancelStatusChoice();
     return;
   }
   if(pendingAction === "STATUS" && pendingStatus && currentEntryId){
+    const sentStatus = pendingStatus;
     db.ref("ppmsData/" + currentEntryId).update({
-      status:pendingStatus,
+      status:sentStatus,
       time:new Date().toLocaleTimeString()
-    });
+    }).then(()=>{
+      showToast(sentStatus === "VERT" ? "Statut envoyé : tout va bien" : "Urgence envoyée à la direction");
+    }).catch(()=>showToast("Erreur d’envoi", "error"));
   }
   cancelStatusChoice();
 }
 function sendLiveMessage(){
-  if(!currentEntryId){alert("Aucune déclaration active.");return;}
+  if(!currentEntryId){showToast("Aucune déclaration active", "error");return;}
   db.ref("ppmsData/" + currentEntryId).update({
     message:liveMessage.value.trim(),
     time:new Date().toLocaleTimeString()
-  });
-  liveMessage.value = "";
+  }).then(()=>{
+    liveMessage.value = "";
+    showToast("Message envoyé à la direction");
+  }).catch(()=>showToast("Erreur d’envoi", "error"));
 }
 function sendInstruction(){
   const msg = generalInstruction.value.trim();
-  if(!msg){alert("Écris une consigne avant d’envoyer.");return;}
-  db.ref("instruction").set({message:msg,type:"MESSAGE",active:true,time:Date.now()});
-  generalInstruction.value = "";
+  if(!msg){showToast("Écris une consigne avant d’envoyer", "error");return;}
+  db.ref("instruction").set({message:msg,type:"MESSAGE",active:true,time:Date.now()}).then(()=>{
+    generalInstruction.value = "";
+    showToast("Consigne envoyée à tous");
+  }).catch(()=>showToast("Erreur d’envoi", "error"));
 }
 function loadDashboardRealtime(){
   db.ref("ppmsData").on("value",snap=>{
     const data = snap.val() || {};
     dashboardBody.innerHTML = "";
     let p=0,a=0,r=0;
-    Object.values(data).forEach(e=>{
+    Object.values(data).sort((a,b)=>{
+      if(a.status === "ROUGE" && b.status !== "ROUGE") return -1;
+      if(a.status !== "ROUGE" && b.status === "ROUGE") return 1;
+      return 0;
+    }).forEach(e=>{
       p += Number(e.present || 0);
       a += Number(e.absent || 0);
       if(e.status === "ROUGE") r++;
@@ -437,10 +525,11 @@ function listenInstruction(){
   db.ref("instruction").on("value",snap=>{
     const i = snap.val();
     if(!i || !i.active){
+      showUserInstruction("");
       hideAlert();
       return;
     }
-    userInstruction.innerText = "CONSIGNE : " + i.message;
+    showUserInstruction(i.message);
     if(i.type === "EVACUATION") showAlert(i.message);
     else hideAlert();
   });
@@ -457,7 +546,10 @@ function hideAlert(){
   stopAlarm();
 }
 function stopAlert(){
-  db.ref("instruction/active").set(false);
+  db.ref("instruction/active").set(false).then(()=>{
+    showToast("Alerte / consigne stoppée");
+  });
+  showUserInstruction("");
   hideAlert();
 }
 function vibratePhone(){
@@ -495,13 +587,16 @@ function resetData(){
   const code = deleteCode.value.trim();
   if(code !== "supp"){
     resetMessage.innerText = "Suppression annulée : code incorrect.";
+    showToast("Code de suppression incorrect", "error");
     return;
   }
   db.ref("ppmsData").set(null);
   db.ref("instruction").set(null);
   deleteCode.value = "";
   resetMessage.innerText = "Données effacées. Nouvelle simulation prête.";
+  showUserInstruction("");
   hideAlert();
+  showToast("Données effacées");
 }
 loadDashboardRealtime();
 listenInstruction();
