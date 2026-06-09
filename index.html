@@ -1,10 +1,11 @@
+Copie-colle tout ce code dans ton index.html :
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PPMS Collège Jules Ferry Gémozac</title>
-
 <style>
 *{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
 body{margin:0;background:linear-gradient(135deg,#07111f,#12395a);color:white}
@@ -64,14 +65,11 @@ th{background:#0b2c45;color:white}
 }
 </style>
 </head>
-
 <body>
-
 <div id="globalAlert" class="alertBanner hidden">
   <div id="globalAlertText"></div>
   <button onclick="stopAlert()">STOP ALERTE</button>
 </div>
-
 <div id="statusModal" class="modal-overlay hidden">
   <div class="modal-box">
     <h2 id="statusModalTitle">Confirmation</h2>
@@ -82,15 +80,11 @@ th{background:#0b2c45;color:white}
     </div>
   </div>
 </div>
-
 <header>
 <h1>Gestion de crise PPMS<br>Collège Jules Ferry, Gémozac</h1>
 <p class="info">Application de déclaration et de supervision en temps réel</p>
-<p id="firebaseStatus" class="info" style="color:#ffd84d;font-weight:bold;">Connexion Firebase...</p>
 </header>
-
 <div class="container">
-
 <section id="home">
 <div class="grid">
 <div class="card" onclick="login('Enseignant')">Enseignant</div>
@@ -101,7 +95,6 @@ th{background:#0b2c45;color:white}
 <div class="card" onclick="login('Sécurité')">Sécurité<br><span class="small">Gendarmerie / Pompiers</span></div>
 </div>
 </section>
-
 <section id="loginPage" class="hidden">
 <div class="box">
 <h2 id="loginTitle"></h2>
@@ -111,7 +104,6 @@ th{background:#0b2c45;color:white}
 <button class="btn-dark" onclick="goHome()">Retour</button>
 </div>
 </section>
-
 <section id="roomChoicePage" class="hidden">
 <div class="box">
 <div class="urgent-banner">URGENT : FERMER VOTRE PORTE À CLÉ AVANT DE FAIRE L'APPEL !</div>
@@ -120,7 +112,6 @@ th{background:#0b2c45;color:white}
 <button class="btn-dark" onclick="goHome()">Retour menu</button>
 </div>
 </section>
-
 <section id="roomForm" class="hidden">
 <div class="box">
 <div class="urgent-banner">URGENT : FERMER VOTRE PORTE À CLÉ AVANT DE FAIRE L'APPEL !</div>
@@ -132,7 +123,6 @@ th{background:#0b2c45;color:white}
 <button class="btn-dark" onclick="backToRooms()">Retour salles</button>
 </div>
 </section>
-
 <section id="staffForm" class="hidden">
 <div class="box">
 <div class="urgent-banner">URGENT : FERMER VOTRE PORTE À CLÉ AVANT DE FAIRE L'APPEL !</div>
@@ -145,7 +135,6 @@ th{background:#0b2c45;color:white}
 <button class="btn-dark" onclick="goHome()">Retour menu</button>
 </div>
 </section>
-
 <section id="statusPage" class="hidden">
 <div class="ppms-top">
 <span>• Se confiner immédiatement</span>
@@ -166,16 +155,13 @@ th{background:#0b2c45;color:white}
 <button class="btn-dark" onclick="goHome()">Retour menu</button>
 </div>
 </section>
-
 <section id="dashboard" class="hidden">
 <h2>Tableau de bord direction / gestionnaire / autorités</h2>
-
 <div class="counter">
 <div>Élèves présents : <span id="totalPresent">0</span></div>
 <div>Élèves absents : <span id="totalAbsent">0</span></div>
 <div>Alertes rouges : <span id="totalRed">0</span></div>
 </div>
-
 <div class="box">
 <button class="btn-red" onclick="sendEvacuation()">ÉVACUATION DEMANDÉE</button>
 <label>Message général à envoyer à tous</label>
@@ -183,7 +169,6 @@ th{background:#0b2c45;color:white}
 <button class="btn-blue" onclick="sendInstruction()">Envoyer la consigne</button>
 <button class="btn-dark" onclick="stopAlert()">STOP ALERTE</button>
 </div>
-
 <table>
 <thead>
 <tr>
@@ -200,33 +185,27 @@ th{background:#0b2c45;color:white}
 </thead>
 <tbody id="dashboardBody"></tbody>
 </table>
-
 <button class="btn-dark" onclick="goHome()">Retour accueil</button>
 <label>Code de suppression</label>
 <input id="deleteCode" type="text" placeholder="Tape le code : supp">
 <button class="btn-red" onclick="resetData()">Effacer toutes les données</button>
 <p id="resetMessage" style="text-align:center;font-size:22px;font-weight:bold;color:#ffd84d;"></p>
 </section>
-
 </div>
-
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
-
 <script>
 const firebaseConfig = {
-  apiKey: "AIzaSyDdI-M0-tV4mK0IRJs48XkITtQX15HxN9g",
-  authDomain: "ppms-7bd0e.firebaseapp.com",
-  databaseURL: "https://ppms-7bd0e-default-rtdb.europe-west1.firebasedatabase.app",
-  projectId: "ppms-7bd0e",
-  storageBucket: "ppms-7bd0e.firebasestorage.app",
-  messagingSenderId: "810099418620",
-  appId: "1:810099418620:web:80a426f0a58905170ebe79"
+  apiKey: "AIzaSyDObLU_scgG3wuBJGdGmDMbXIhtWqYL5IM",
+  authDomain: "ppms2-201f3.firebaseapp.com",
+  databaseURL: "https://ppms2-201f3-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "ppms2-201f3",
+  storageBucket: "ppms2-201f3.firebasestorage.app",
+  messagingSenderId: "835055943666",
+  appId: "1:835055943666:web:60904fa02f2d09c1d1b56b"
 };
-
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
-
 let currentRole = "";
 let currentEntryId = null;
 let pendingStatus = null;
@@ -235,7 +214,6 @@ let audioContext = null;
 let alarmInterval = null;
 let audioUnlocked = false;
 let selectedRoom = "";
-
 const rooms = [
   "Salle 11",
   "Salle 13",
@@ -274,7 +252,6 @@ const rooms = [
   "Salle polyvalente",
   "Vestiaires gymnase"
 ];
-
 function unlockAudio(){
   if(audioUnlocked) return;
   const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -284,13 +261,10 @@ function unlockAudio(){
   }
   audioUnlocked = true;
 }
-
 document.addEventListener("click", unlockAudio, {once:false});
 document.addEventListener("touchstart", unlockAudio, {once:false});
-
 function hideAll(){document.querySelectorAll("section").forEach(s=>s.classList.add("hidden"));}
 function goHome(){hideAll();document.getElementById("home").classList.remove("hidden");}
-
 function login(role){
   currentRole = role;
   hideAll();
@@ -298,7 +272,6 @@ function login(role){
   document.getElementById("loginTitle").innerText = "Connexion : " + role;
   document.getElementById("passwordInput").value = "";
 }
-
 function checkPassword(){
   const p = document.getElementById("passwordInput").value.trim();
   if(p !== "ppms"){
@@ -313,11 +286,9 @@ function checkPassword(){
   }
   else document.getElementById("dashboard").classList.remove("hidden");
 }
-
 function generateRooms(){
   const grid = document.getElementById("roomGrid");
   grid.innerHTML = "";
-
   rooms.forEach(roomName=>{
     const btn = document.createElement("button");
     btn.className = "room-btn";
@@ -326,27 +297,23 @@ function generateRooms(){
     grid.appendChild(btn);
   });
 }
-
 function selectRoom(roomName, btn){
   document.querySelectorAll("#roomGrid button").forEach(b=>{
     b.className = "room-btn";
   });
   btn.className = "room-btn-selected";
   selectedRoom = roomName;
-
   setTimeout(()=>{
     hideAll();
     document.getElementById("roomForm").classList.remove("hidden");
     document.getElementById("selectedRoomTitle").innerText = "Vous êtes dans " + selectedRoom;
   },200);
 }
-
 function backToRooms(){
   hideAll();
   document.getElementById("roomChoicePage").classList.remove("hidden");
   generateRooms();
 }
-
 function sendTeacherInfo(){
   const entry = {
     role:"Enseignant",
@@ -366,7 +333,6 @@ function sendTeacherInfo(){
   hideAll();
   statusPage.classList.remove("hidden");
 }
-
 function sendStaffInfo(){
   const entry = {
     role:"Personnel",
@@ -386,7 +352,6 @@ function sendStaffInfo(){
   hideAll();
   statusPage.classList.remove("hidden");
 }
-
 function updateStatus(status){
   if(!currentEntryId){alert("Aucune déclaration active.");return;}
   pendingAction = "STATUS";
@@ -395,7 +360,6 @@ function updateStatus(status){
   statusModalText.innerText = status === "VERT" ? "Confirmer l'envoi : TOUT VA BIEN ?" : "Confirmer l'envoi : URGENCE DEMANDÉE ?";
   statusModal.classList.remove("hidden");
 }
-
 function sendEvacuation(){
   pendingAction = "EVACUATION";
   pendingStatus = null;
@@ -403,13 +367,11 @@ function sendEvacuation(){
   statusModalText.innerText = "Confirmer l’envoi : ÉVACUATION DEMANDÉE à tous ?";
   statusModal.classList.remove("hidden");
 }
-
 function cancelStatusChoice(){
   pendingStatus = null;
   pendingAction = null;
   statusModal.classList.add("hidden");
 }
-
 function confirmStatusChoice(){
   if(pendingAction === "EVACUATION"){
     db.ref("instruction").set({
@@ -421,7 +383,6 @@ function confirmStatusChoice(){
     cancelStatusChoice();
     return;
   }
-
   if(pendingAction === "STATUS" && pendingStatus && currentEntryId){
     db.ref("ppmsData/" + currentEntryId).update({
       status:pendingStatus,
@@ -430,7 +391,6 @@ function confirmStatusChoice(){
   }
   cancelStatusChoice();
 }
-
 function sendLiveMessage(){
   if(!currentEntryId){alert("Aucune déclaration active.");return;}
   db.ref("ppmsData/" + currentEntryId).update({
@@ -439,29 +399,24 @@ function sendLiveMessage(){
   });
   liveMessage.value = "";
 }
-
 function sendInstruction(){
   const msg = generalInstruction.value.trim();
   if(!msg){alert("Écris une consigne avant d’envoyer.");return;}
   db.ref("instruction").set({message:msg,type:"MESSAGE",active:true,time:Date.now()});
   generalInstruction.value = "";
 }
-
 function loadDashboardRealtime(){
   db.ref("ppmsData").on("value",snap=>{
     const data = snap.val() || {};
     dashboardBody.innerHTML = "";
     let p=0,a=0,r=0;
-
     Object.values(data).forEach(e=>{
       p += Number(e.present || 0);
       a += Number(e.absent || 0);
       if(e.status === "ROUGE") r++;
-
       const tr = document.createElement("tr");
       if(e.status === "VERT") tr.className = "status-green";
       if(e.status === "ROUGE") tr.className = "status-red";
-
       tr.innerHTML = `
         <td>${e.time || ""}</td>
         <td>${e.role || ""}</td>
@@ -475,13 +430,11 @@ function loadDashboardRealtime(){
       `;
       dashboardBody.appendChild(tr);
     });
-
     totalPresent.innerText = p;
     totalAbsent.innerText = a;
     totalRed.innerText = r;
   });
 }
-
 function listenInstruction(){
   db.ref("instruction").on("value",snap=>{
     const i = snap.val();
@@ -489,58 +442,48 @@ function listenInstruction(){
       hideAlert();
       return;
     }
-
     userInstruction.innerText = "CONSIGNE : " + i.message;
-
     if(i.type === "EVACUATION") showAlert(i.message);
     else hideAlert();
   });
 }
-
 function showAlert(message){
   globalAlertText.innerText = "⚠ " + message + " ⚠";
   globalAlert.classList.remove("hidden");
   startAlarm();
   vibratePhone();
 }
-
 function hideAlert(){
   globalAlert.classList.add("hidden");
   globalAlertText.innerText = "";
   stopAlarm();
 }
-
 function stopAlert(){
   db.ref("instruction/active").set(false);
   hideAlert();
 }
-
 function vibratePhone(){
   if(navigator.vibrate){
     navigator.vibrate([400,200,400,200,800]);
   }
 }
-
 function startAlarm(){
   if(alarmInterval) return;
   beepOnce();
   alarmInterval = setInterval(beepOnce, 900);
 }
-
 function stopAlarm(){
   if(alarmInterval){
     clearInterval(alarmInterval);
     alarmInterval = null;
   }
 }
-
 function beepOnce(){
   if(!audioUnlocked) return;
   const AudioContext = window.AudioContext || window.webkitAudioContext;
   if(!audioContext && AudioContext) audioContext = new AudioContext();
   if(!audioContext) return;
   if(audioContext.state === "suspended") audioContext.resume();
-
   const oscillator = audioContext.createOscillator();
   const gain = audioContext.createGain();
   oscillator.frequency.value = 880;
@@ -550,7 +493,6 @@ function beepOnce(){
   oscillator.start();
   oscillator.stop(audioContext.currentTime + 0.18);
 }
-
 function resetData(){
   const code = deleteCode.value.trim();
   if(code !== "supp"){
@@ -563,10 +505,8 @@ function resetData(){
   resetMessage.innerText = "Données effacées. Nouvelle simulation prête.";
   hideAlert();
 }
-
 loadDashboardRealtime();
 listenInstruction();
 </script>
-
 </body>
 </html>
